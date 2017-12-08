@@ -11,3 +11,9 @@ export const changePriority = id => dispatch => {
         id
     });
 }
+
+export const removeAll = () => dispatch => {
+    dispatch({
+        type: "REMOVE_ALL",
+    });
+}

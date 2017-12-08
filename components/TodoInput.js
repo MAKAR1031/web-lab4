@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { addTodo } from '../actions/todo_actions';
 
 class TodoInput extends Component {
     state = { value: '' };
@@ -7,7 +11,8 @@ class TodoInput extends Component {
     changeText = evt => this.setState({ value: evt.target.value });
     
     handleAdd = () => {
-        this.props.onSubmit(this.state.value);
+        console.log(this.props);
+        this.props.addTodo(this.state.value);
         this.setState({ value: '' })
     }
 
@@ -16,10 +21,10 @@ class TodoInput extends Component {
             <div>
                 <div className="input-container">
                     <input id="title" type="text" 
-                        disabled={this.props.disabled}
+                        disabled={false}
                         onChange={this.changeText}/>
                     <button 
-                        disabled={this.props.disabled}
+                        disabled={false}
                         value={this.state.value}
                         className='btn add' onClick={this.handleAdd}>Add</button>
                 </div>
@@ -31,4 +36,13 @@ class TodoInput extends Component {
     }
 }
 
-export default TodoInput;
+const mapStateToProps = state => ({
+    todos: state.todos
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(
+    { addTodo },
+    dispatch
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoInput);
