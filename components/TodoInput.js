@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { addTodo } from '../actions/todo_actions';
 
 class TodoInput extends Component {
-    state = { value: 'asd' };
+    state = { value: '' };
 
     disabled = () => this.props.todos.length >= 10;
 
@@ -21,12 +21,13 @@ class TodoInput extends Component {
         return (
             <div>
                 <div className="input-container">
-                    <input id="title" type="text" 
+                    <input id="title" 
+                        type="text"
+                        value={this.state.value}
                         disabled={this.disabled()}
                         onChange={this.changeText}/>
                     <button 
                         disabled={this.disabled()}
-                        value={this.state.value}
                         className='btn add' onClick={this.handleAdd}>Add</button>
                 </div>
                 <div>
