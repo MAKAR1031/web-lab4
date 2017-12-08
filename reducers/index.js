@@ -18,11 +18,14 @@ const todosReducer = (state = initialState, action) => {
                     return state;
                 }
             }
-            return state.concat({
-                id: ++todoNextId,
-                text: action.text.trim(),
-                priority: false
-            });
+            return [
+                ...state,
+                {
+                    id: ++todoNextId,
+                    text: action.text.trim(),
+                    priority: false
+                }
+            ];
         case 'CHANGE_PRIORITY':
             return state.map(todo => {
                 if (todo.id === action.id)  {
@@ -30,8 +33,10 @@ const todosReducer = (state = initialState, action) => {
                         ...todo,
                         priority: !todo.priority
                     }
+                } else {
+                    return todo
                 }
-            })
+            });
         case 'REMOVE_ALL':
             return initialState;
         default:

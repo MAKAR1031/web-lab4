@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 class TodoItem extends Component {
 
-    handleChange = () => this.props.onChangePriority(this.props.todo.id);
+    handleChange = () => {
+        console.log(this.props.todo.id);
+        this.props.onChangePriority(this.props.todo.id);
+    }
 
     isPriority = () => this.props.todo.priority;
 
