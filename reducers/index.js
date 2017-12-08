@@ -24,13 +24,16 @@ const todosReducer = (state = initialState, action) => {
                 priority: false
             });
         case 'CHANGE_PRIORITY':
-            state.forEach(function (todo) {
+            return state.map(todo => {
                 if (todo.id === action.id)  {
-                    console.log(todo.text);
-                    todo.priority = !todo.priority;
+                    return {
+                        ...todo,
+                        priority: !todo.priority
+                    }
                 }
-            });
-            return state;
+            })
+        case 'REMOVE_ALL':
+            return initialState;
         default:
             return initialState;
     }
