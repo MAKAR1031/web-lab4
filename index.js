@@ -5,14 +5,13 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import App from './containers/App';
-import reducers from './reducers';
+import reducer from './reducers';
 
-const combinedReducers = combineReducers(reducers);
 const store = createStore(
-    combinedReducers,
+    reducer,
     applyMiddleware(thunk)
 );
 

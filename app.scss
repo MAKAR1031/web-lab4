@@ -40,7 +40,7 @@ body {
   }
 }
 
-#title {
+input {
   border-radius: 5px;
   height: 35px;
   font-size: 16px;
@@ -93,4 +93,8 @@ body {
   &:hover {
     background-color: #FF6656;
   }
+}
+
+.search-container {
+  margin: 10px 0;
 }

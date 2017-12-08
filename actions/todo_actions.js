@@ -17,3 +17,10 @@ export const removeAll = () => dispatch => {
         type: "REMOVE_ALL",
     });
 }
+
+export const filter = (searchString) => dispatch => {
+    dispatch({
+        type: "FILTER_TODOS",
+        searchString
+    });
+}
